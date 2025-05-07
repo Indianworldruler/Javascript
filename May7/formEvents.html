@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Form with Events</title>
+  <style>
+    .hover-message {
+      color: green;
+      font-weight: bold;
+    }
+  </style>
+</head>
+<body>
+
+<h2 onmouseover="showHoverMessage()" onmouseout="clearHoverMessage()">
+  Fill the form below
+</h2>
+<p id="hoverMsg"></p>
+
+<form onsubmit="return handleSubmit()">
+  <label>Name:</label>
+  <input type="text" id="name" onfocus="onFocusEvent(this)" onblur="onBlurEvent(this)" onkeydown="onKeyDownEvent()" onkeyup="onKeyUpEvent()" /><br><br>
+
+  <label>Email:</label>
+  <input type="email" id="email" onfocus="onFocusEvent(this)" onblur="onBlurEvent(this)" /><br><br>
+
+  <label>Password:</label>
+  <input type="password" id="password" /><br><br>
+
+  <button type="submit" onclick="onClickEvent()">Submit</button>
+</form>
+
+<script>
+  function onFocusEvent(input) {
+    input.style.backgroundColor = "#e0ffff";
+  }
+
+  function onBlurEvent(input) {
+    input.style.backgroundColor = "";
+  }
+
+  function onKeyDownEvent() {
+    console.log("Key is being pressed down");
+  }
+
+  function onKeyUpEvent() {
+    console.log("Key released");
+  }
+
+  function onClickEvent() {
+    alert("Submit button clicked");
+  }
+
+  function handleSubmit() {
+    alert("Form submitted!");
+    return false; // Prevent actual form submission
+  }
+
+  function showHoverMessage() {
+    document.getElementById("hoverMsg").innerText = "You hovered over the heading!";
+  }
+
+  function clearHoverMessage() {
+    document.getElementById("hoverMsg").innerText = "";
+  }
+</script>
+
+</body>
+</html>

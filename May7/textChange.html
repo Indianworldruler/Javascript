@@ -1,36 +1,51 @@
-<!doctype html>
-<html lang="en">
+<!DOCTYPE html>
+<html>
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>HTML page</title>
+  <title>Dynamic Div and Text Change</title>
 </head>
 <body>
-  <header>
-    <div id="headingContainer">
-      <h1>This is Lorem text</h1>
-    </div>
-  </header>
-  <main>
-    <div class="paragraphContainer">
-      <p> Lorem ipsum dolor sit amet consectetur adipisicing elit. Non labore cumque sed. Sit, nam aliquid. </p>
-    </div>
 
-    <br><br>
+<div id="demo">Result will appear here</div>
 
-    <div class="paragraphContainer">
-      <p> Lorem ipsum dolor sit amet consectetur adipisicing elit. Minima doloribus unde reiciendis magnam? </p>
-    </div>
-  </main>
+<button onclick="myFunction()">Add Numbers</button>
+<button onclick="changeText()">Change Text</button>
 
-  <button onclick="changeText()">Change Text</button>
+<header>
+  <div id="headingContainer">
+    <h1>This is Lorem text</h1>
+  </div>
+</header>
 
-  <script>
-    function changeText() {
-      document.getElementById("headingContainer").innerHTML = "<h1>Heading Changed</h1>";
-      document.getElementsByClassName("paragraphContainer")[0].innerHTML = "<p>First paragraph changed</p>";
-      document.getElementsByClassName("paragraphContainer")[1].innerHTML = "<p>Second paragraph changed</p>";
-    }
-  </script>
+<main>
+  <div class="paragraphContainer">
+    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Non labore cumque sed. Sit, nam aliquid.</p>
+  </div>
+
+  <div class="paragraphContainer">
+    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Minima doloribus unde reiciendis magnam?</p>
+  </div>
+</main>
+
+<script>
+  const newDiv = document.createElement("div");
+  newDiv.id = "myid";
+  newDiv.className = "myclass";
+  newDiv.innerText = "This is a dynamically created div";
+  document.body.appendChild(newDiv);
+
+  function myFunction() {
+    var x = 5;
+    var y = 10;
+    var z = parseInt(x) + parseInt(y);
+    document.getElementById("demo").innerHTML = "Sum is: " + z;
+  }
+
+  function changeText() {
+    document.getElementById("headingContainer").innerHTML = "<h1>Heading changed using ID</h1>";
+    document.getElementsByClassName("paragraphContainer")[0].innerHTML = "<p>Changed using class name</p>";
+    document.getElementsByTagName("p")[1].innerText = "Changed using tag name";
+    document.querySelector(".paragraphContainer p").style.color = "blue";
+  }
+</script>
 </body>
 </html>
