@@ -1,0 +1,36 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>HTML page</title>
+</head>
+<body>
+  <header>
+    <div id="headingContainer">
+      <h1>This is Lorem text</h1>
+    </div>
+  </header>
+  <main>
+    <div class="paragraphContainer">
+      <p> Lorem ipsum dolor sit amet consectetur adipisicing elit. Non labore cumque sed. Sit, nam aliquid. </p>
+    </div>
+
+    <br><br>
+
+    <div class="paragraphContainer">
+      <p> Lorem ipsum dolor sit amet consectetur adipisicing elit. Minima doloribus unde reiciendis magnam? </p>
+    </div>
+  </main>
+
+  <button onclick="changeText()">Change Text</button>
+
+  <script>
+    function changeText() {
+      document.getElementById("headingContainer").innerHTML = "<h1>Heading Changed</h1>";
+      document.getElementsByClassName("paragraphContainer")[0].innerHTML = "<p>First paragraph changed</p>";
+      document.getElementsByClassName("paragraphContainer")[1].innerHTML = "<p>Second paragraph changed</p>";
+    }
+  </script>
+</body>
+</html>
