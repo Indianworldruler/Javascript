@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Form Validation</title>
+</head>
+<body>
+  <h2>Sample Form</h2>
+  <form name="myForm" onsubmit="return validate()">
+    Name: <input type="text" name="Name"><br><br>
+    Email: <input type="text" name="Email"><br><br>
+    Phone: <input type="text" name="ph"><br><br>
+    Country:
+    <select name="Country">
+      <option value="-1">Select Country</option>
+      <option value="India">India</option>
+      <option value="USA">USA</option>
+    </select><br><br>
+    <input type="submit" value="Submit">
+  </form>
+
+  <script>
+    function validate() {
+      var name = document.forms["myForm"]["Name"].value;
+      var email = document.forms["myForm"]["Email"].value;
+      var phone = document.forms["myForm"]["ph"].value;
+      var country = document.forms["myForm"]["Country"].value;
+
+      if (!name) {
+        alert("Name must be filled out");
+        return false;
+      }
+
+      if (!email || email.indexOf("@") == -1) {
+        alert("Email must be valid");
+        return false;
+      }
+
+      if (!phone) {
+        alert("Phone number must be filled out");
+        return false;
+      }
+
+      if (country == "-1") {
+        alert("Please select a country");
+        return false;
+      }
+
+      return true;
+    }
+  </script>
+</body>
+</html>
