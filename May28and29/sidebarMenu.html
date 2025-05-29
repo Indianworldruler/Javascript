@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Animated Sidebar</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: Arial, sans-serif;
+      transition: margin-left 0.3s ease;
+    }
+
+    .sidebar {
+      position: fixed;
+      top: 0;
+      left: -250px;
+      width: 250px;
+      height: 100%;
+      background: #1c1c1c;
+      color: white;
+      padding: 20px;
+      box-shadow: 2px 0 10px rgba(0,0,0,0.3);
+      transition: left 0.3s ease;
+      z-index: 1000;
+    }
+
+    .sidebar.active {
+      left: 0;
+    }
+
+    .sidebar h2 {
+      margin-bottom: 20px;
+    }
+
+    .sidebar a {
+      display: block;
+      margin: 15px 0;
+      text-decoration: none;
+      color: white;
+      font-size: 1.1em;
+      transition: 0.2s;
+    }
+
+    .sidebar a:hover {
+      color: #0f0;
+      padding-left: 10px;
+    }
+
+    .toggle-btn {
+      position: fixed;
+      top: 20px;
+      left: 20px;
+      background: #333;
+      color: white;
+      font-size: 24px;
+      padding: 10px 15px;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      z-index: 1100;
+    }
+
+    .content {
+      padding: 60px 40px;
+      transition: margin-left 0.3s ease;
+    }
+
+    .shifted {
+      margin-left: 250px;
+    }
+
+    @media (max-width: 768px) {
+      .content.shifted {
+        margin-left: 0;
+      }
+
+      .sidebar {
+        width: 100%;
+        max-width: 250px;
+      }
+
+      .sidebar.active + .content {
+        margin-left: 0;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <button class="toggle-btn" id="toggleBtn">&#9776;</button>
+
+  <div class="sidebar" id="sidebar">
+    <h2>Menu</h2>
+    <a href="#">Home</a>
+    <a href="#">About</a>
+    <a href="#">Services</a>
+    <a href="#">Contact</a>
+  </div>
+
+  <div class="content" id="mainContent">
+    <h1>Welcome</h1>
+    <p>This is your main content. Click the ☰ button to open the sidebar.</p>
+  </div>
+
+  <script>
+    const toggleBtn = document.getElementById('toggleBtn');
+    const sidebar = document.getElementById('sidebar');
+    const content = document.getElementById('mainContent');
+
+    toggleBtn.addEventListener('click', () => {
+      sidebar.classList.toggle('active');
+      content.classList.toggle('shifted');
+    });
+  </script>
+
+</body>
+</html>
