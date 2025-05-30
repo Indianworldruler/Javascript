@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Modal Popup Example</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      text-align: center;
+      margin-top: 100px;
+    }
+
+    
+    .overlay {
+      position: fixed;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      background: rgba(0, 0, 0, 0.5);
+      display: none;
+      align-items: center;
+      justify-content: center;
+      z-index: 1000;
+    }
+
+    
+    .modal {
+      background: #fff;
+      padding: 30px;
+      border-radius: 10px;
+      max-width: 400px;
+      width: 90%;
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+      position: relative;
+    }
+
+    .modal h2 {
+      margin-top: 0;
+    }
+
+    .close-btn {
+      position: absolute;
+      top: 10px; right: 10px;
+      background: transparent;
+      border: none;
+      font-size: 20px;
+      cursor: pointer;
+    }
+
+    .show {
+      display: flex;
+    }
+
+    button {
+      padding: 10px 20px;
+      font-size: 16px;
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>Modal Popup Demo</h1>
+  <button id="openModalBtn">Open Modal</button>
+
+  <div class="overlay" id="modalOverlay">
+    <div class="modal">
+      <button class="close-btn" id="closeModalBtn">&times;</button>
+      <h2>Modal Title</h2>
+      <p>This is a simple modal popup using HTML, CSS, and JavaScript.</p>
+    </div>
+  </div>
+
+  <script>
+    const openBtn = document.getElementById('openModalBtn');
+    const closeBtn = document.getElementById('closeModalBtn');
+    const overlay = document.getElementById('modalOverlay');
+
+    openBtn.addEventListener('click', () => {
+      overlay.classList.add('show');
+    });
+
+    closeBtn.addEventListener('click', () => {
+      overlay.classList.remove('show');
+    });
+
+    
+    overlay.addEventListener('click', (e) => {
+      if (e.target === overlay) {
+        overlay.classList.remove('show');
+      }
+    });
+  </script>
+
+</body>
+</html>

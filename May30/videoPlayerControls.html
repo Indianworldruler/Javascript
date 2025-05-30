@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Custom Video Controls</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #111;
+      color: #fff;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding-top: 50px;
+    }
+
+    .video-container {
+      width: 640px;
+      max-width: 100%;
+      text-align: center;
+    }
+
+    video {
+      width: 100%;
+      border-radius: 10px;
+      margin-bottom: 10px;
+    }
+
+    .controls {
+      display: flex;
+      justify-content: center;
+      gap: 20px;
+    }
+
+    .btn {
+      padding: 10px 20px;
+      font-size: 16px;
+      background-color: #28a745;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+
+    .btn.pause {
+      background-color: #dc3545;
+    }
+
+    .btn:hover {
+      opacity: 0.9;
+    }
+  </style>
+</head>
+<body>
+
+  <h2>Custom Video Controls</h2>
+
+  <div class="video-container">
+    <video id="video" src="https://www.w3schools.com/html/mov_bbb.mp4" type="video/mp4"></video>
+    
+    <div class="controls">
+      <button class="btn play" id="playBtn">Play</button>
+      <button class="btn pause" id="pauseBtn">Pause</button>
+    </div>
+  </div>
+
+  <script>
+    const video = document.getElementById('video');
+    const playBtn = document.getElementById('playBtn');
+    const pauseBtn = document.getElementById('pauseBtn');
+
+    playBtn.addEventListener('click', () => {
+      video.play();
+    });
+
+    pauseBtn.addEventListener('click', () => {
+      video.pause();
+    });
+  </script>
+
+</body>
+</html>

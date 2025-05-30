@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>FAQ Accordion</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      padding: 40px;
+      max-width: 600px;
+      margin: auto;
+      background: #f9f9f9;
+    }
+
+    h2 {
+      text-align: center;
+      margin-bottom: 30px;
+    }
+
+    .faq {
+      border-bottom: 1px solid #ddd;
+      padding: 15px 0;
+      cursor: pointer;
+    }
+
+    .faq .question {
+      font-weight: bold;
+    }
+
+    .faq .answer {
+      display: none;
+      padding: 10px 0;
+      color: #333;
+    }
+
+    .faq.active .answer {
+      display: block;
+    }
+  </style>
+</head>
+<body>
+
+  <h2>Frequently Asked Questions</h2>
+
+  <div class="faq">
+    <div class="question">What is Lorem Ipsum?</div>
+    <div class="answer">Lorem Ipsum is simply dummy text of the printing and typesetting industry.</div>
+  </div>
+
+  <div class="faq">
+    <div class="question">Why do we use it?</div>
+    <div class="answer">It is a long established fact that a reader will be distracted by readable content.</div>
+  </div>
+
+  <div class="faq">
+    <div class="question">Where can I get some?</div>
+    <div class="answer">There are many variations of passages of Lorem Ipsum available.</div>
+  </div>
+
+  <script>
+    const faqs = document.querySelectorAll('.faq');
+
+    faqs.forEach(faq => {
+      faq.addEventListener('click', () => {
+        
+        faqs.forEach(item => {
+          if (item !== faq) {
+            item.classList.remove('active');
+          }
+        });
+
+        
+        faq.classList.toggle('active');
+      });
+    });
+  </script>
+
+</body>
+</html>

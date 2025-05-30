@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Food Menu Filter</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      padding: 30px;
+      background-color: #f4f4f4;
+      text-align: center;
+    }
+
+    .btn-container {
+      margin-bottom: 20px;
+    }
+
+    .filter-btn {
+      padding: 10px 15px;
+      margin: 5px;
+      background: #333;
+      color: white;
+      border: none;
+      cursor: pointer;
+    }
+
+    .filter-btn:hover {
+      background: #555;
+    }
+
+    .menu-container {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 20px;
+    }
+
+    .menu-item {
+      background: white;
+      padding: 15px;
+      width: 200px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+      border-radius: 6px;
+      text-align: left;
+    }
+
+    .menu-item h4 {
+      margin: 0;
+      color: #333;
+    }
+
+    .menu-item p {
+      color: #777;
+      font-size: 14px;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>Food Menu</h1>
+
+  <div class="btn-container">
+    <button class="filter-btn" data-category="all">All</button>
+    <button class="filter-btn" data-category="breakfast">Breakfast</button>
+    <button class="filter-btn" data-category="lunch">Lunch</button>
+    <button class="filter-btn" data-category="dinner">Dinner</button>
+  </div>
+
+  <div class="menu-container" id="menu"></div>
+
+  <script>
+    const menu = [
+      { title: "Pancakes", category: "breakfast", desc: "Fluffy pancakes with syrup" },
+      { title: "Burger", category: "lunch", desc: "Beef burger with cheese" },
+      { title: "Steak", category: "dinner", desc: "Grilled steak with veggies" },
+      { title: "Omelette", category: "breakfast", desc: "Egg omelette with cheese" },
+      { title: "Salad", category: "lunch", desc: "Fresh mixed green salad" },
+      { title: "Spaghetti", category: "dinner", desc: "Spaghetti with tomato sauce" }
+    ];
+
+    const menuContainer = document.getElementById('menu');
+    const filterButtons = document.querySelectorAll('.filter-btn');
+
+    
+    function displayMenuItems(items) {
+      menuContainer.innerHTML = items.map(item => `
+        <div class="menu-item">
+          <h4>${item.title}</h4>
+          <p>${item.desc}</p>
+        </div>
+      `).join('');
+    }
+
+    
+    displayMenuItems(menu);
+
+    
+    filterButtons.forEach(button => {
+      button.addEventListener('click', () => {
+        const category = button.dataset.category;
+
+        const filteredMenu = category === 'all'
+          ? menu
+          : menu.filter(item => item.category === category);
+
+        displayMenuItems(filteredMenu);
+      });
+    });
+  </script>
+
+</body>
+</html>
