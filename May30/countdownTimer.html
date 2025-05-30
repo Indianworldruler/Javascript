@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Custom Countdown Timer</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #f0f0f0;
+      text-align: center;
+      padding: 50px;
+    }
+
+    input, button {
+      font-size: 16px;
+      padding: 10px;
+      margin: 10px;
+    }
+
+    #countdown {
+      font-size: 2em;
+      margin-top: 30px;
+      background-color: #333;
+      color: white;
+      padding: 20px;
+      border-radius: 10px;
+      display: inline-block;
+      min-width: 250px;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>Countdown Timer</h1>
+  <input type="datetime-local" id="targetDate" />
+  <button onclick="startCountdown()">Start Countdown</button>
+
+  <div id="countdown">Select a date and click Start</div>
+
+  <script>
+    let interval;
+
+    function startCountdown() {
+      clearInterval(interval); // Clear previous countdown
+      const input = document.getElementById("targetDate").value;
+
+      if (!input) {
+        document.getElementById("countdown").textContent = "Please select a valid date.";
+        return;
+      }
+
+      const target = new Date(input).getTime();
+
+      interval = setInterval(() => {
+        const now = new Date().getTime();
+        const distance = target - now;
+
+        if (distance <= 0) {
+          clearInterval(interval);
+          document.getElementById("countdown").textContent = "⏰ Time's up!";
+          return;
+        }
+
+        const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+        const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+        const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+        const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+        document.getElementById("countdown").textContent = 
+          `${days}d ${hours}h ${minutes}m ${seconds}s`;
+      }, 1000);
+    }
+  </script>
+
+</body>
+</html>
